@@ -12,6 +12,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -35,6 +37,7 @@ public class PhotoGalleryFragment extends Fragment {
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setRetainInstance(true);
+    setHasOptionsMenu(true);
     new FetchItemTask().execute();
 
     Handler responseHandler = new Handler();
@@ -83,6 +86,12 @@ public class PhotoGalleryFragment extends Fragment {
     super.onDestroy();
     mThumbnailDownloader.quit();
     Log.i(TAG, "Background thread destroyed.");
+  }
+
+  @Override
+  public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    super.onCreateOptionsMenu(menu, inflater);
+    inflater.inflate(R.menu.fragment_photo_gallery, menu);
   }
 
   private void setupAdapter() {
