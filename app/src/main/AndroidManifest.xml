@@ -2,9 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.lynnik.photogallery">
 
+  <permission
+    android:name="com.example.lynnik.photogallery.PRIVATE"
+    android:protectionLevel="signature"/>
+
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+  <uses-permission
+    android:name="com.bignerdranch.android.photogallery.PRIVATE"/>
 
   <application
     android:allowBackup="true"
