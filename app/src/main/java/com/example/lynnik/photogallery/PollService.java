@@ -22,6 +22,9 @@ public class PollService extends IntentService {
 
   private static final int POLL_INTERVAL = 1000 * 60;
 
+  public static final String ACTION_SHOW_NOTIFICATION =
+      "com.example.lynnik.photogallery.SHOW_NOTIFICATION";
+
   public static Intent newIntent(Context context) {
     return new Intent(context, PollService.class);
   }
@@ -96,6 +99,8 @@ public class PollService extends IntentService {
       NotificationManagerCompat notificationManager =
           NotificationManagerCompat.from(this);
       notificationManager.notify(0, notification);
+
+      sendBroadcast(new Intent(ACTION_SHOW_NOTIFICATION));
     }
 
     QueryPreferences.setLastResultId(this, resultId);
